@@ -1,0 +1,11 @@
+S>[5][4]<exp>[3]<neg>[5]<S>
+S>[4]<exp>[3]<neg>[5]<S>
+S>[2]<coef>[4]<exp>[3]<neg>[5]<S>
+S>[λ]
+exp>[2]<coef>[4]<exp>
+exp>[1]<coef>[4]<exp>
+exp>[λ]
+neg>[2]
+neg>[λ]
+coef>[5]
+coef>[λ]

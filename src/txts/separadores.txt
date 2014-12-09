@@ -1,0 +1,29 @@
+1 Operadores Aritmeticos +
+2 Operadores Aritmeticos -
+3 Operador de Igual      =
+4 Variable               a
+4 Variable               b
+4 Variable               c
+4 Variable               d
+4 Variable               e
+4 Variable               f
+4 Variable               g
+4 Variable               h
+4 Variable               i
+4 Variable               j
+4 Variable               k
+4 Variable               l
+4 Variable               m
+4 Variable               n
+4 Variable               o
+4 Variable               p
+4 Variable               q
+4 Variable               r
+4 Variable               s
+4 Variable               t
+4 Variable               u
+4 Variable               v
+4 Variable               w
+4 Variable               x
+4 Variable               y
+4 Variable               z
