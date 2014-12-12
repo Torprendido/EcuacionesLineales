@@ -6,12 +6,14 @@ public class MatrizCuadrada {
 
     private final double[][] array;
     private int indiceFilas;
-    private String error;
+    private String errores;
+    private String soluciones;
 
     public MatrizCuadrada() {
         array = new double[27][26];
         indiceFilas = -1;
-        error = "";
+        errores = "";
+        soluciones = "";
     }
 
     public void insertVector(ArrayList<Lexema> vectorFila) {
@@ -28,7 +30,7 @@ public class MatrizCuadrada {
             for (int i = 3; i < c.length; i++) {
                 if (c[i][0].compareTo(vectorFila.get(j).getLexema()) == 0) {
                     if (array[i - 3][indiceFilas] != 0) {
-                        error += "Variable " + c[i][0] + " repedida en la Ecuacion " + (indiceFilas + 1) + '\n';
+                        errores += "Variable " + c[i][0] + " repedida en la Ecuacion " + (indiceFilas + 1) + '\n';
                         return;
                     }
                     array[i - 3][indiceFilas] = coeficiente.contains("5")
@@ -49,40 +51,46 @@ public class MatrizCuadrada {
     }
 
     public String resolverEcuacion() {
-        if (error.length() != 0) {
-            return error;
+        if (errores.length() != 0) {
+            return errores;
         }
-        for (int j = 0; j < indiceFilas + 1; j++) {
-            for (int i = 0; i < 26; i++) {
+        for (int j = 0; j < indiceFilas + 1; j++)
+            for (int i = 0; i < 26; i++)
                 if (array[i][j] != 0.0) {
                     normalizar(i, j);
                     aplicarGauss(i, j);
                     break;
                 }
-            }
-        }
-        for (int j = 0; j < indiceFilas + 1; j++) {
-            for (int i = 0; i < 27; i++) {
-                System.out.print(array[i][j] + " ");
-            }
-            System.out.println();
-        }
-        return "";
+        return acomodarResultado();
     }
 
+    public String acomodarResultado(){
+        for (int j = 0; j < indiceFilas + 1; j++) {
+            boolean hayUno = false;
+            for (int i = 0; i < 27; i++) {
+                if (array[i][j] == 1) {
+                    soluciones += (char) (i + 97) + " = " + array[26][j] + '\n';
+                    hayUno = true;
+                    break;
+                }
+            }
+            if (!hayUno)
+                return errores = "Esta ecuacion no tiene solucion\n";
+        }
+        return soluciones;
+    }
+    
     private void normalizar(int columna, int fila) {
         double aux = array[columna][fila];
         for (int i = columna; i < 27; i++) array[i][fila] = array[i][fila] / aux;
     }
 
     private void aplicarGauss(int columna, int fila) {
-        for (int j = 0; j < indiceFilas + 1; j++) {
+        for (int j = 0; j < indiceFilas + 1; j++)
             if (j != fila) {
                 double aux = array[columna][j];
-                for (int i = columna; i < 27; i++) {
+                for (int i = columna; i < 27; i++)
                     array[i][j] = -array[i][fila] * aux + array[i][j];
-                }
             }
-        }
     }
 }

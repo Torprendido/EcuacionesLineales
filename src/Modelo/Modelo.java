@@ -80,6 +80,9 @@ public class Modelo {
     public static String tokenToLexema(String numeroToken) {
         String[][] separadores = ExtraerSeparadores();
         String[][] automatas = ExtraerAutomatas();
+        if (numeroToken.compareTo("1") == 0) return "+";
+        if (numeroToken.compareTo("2") == 0) return "-";
+        if (numeroToken.compareTo("3") == 0) return "=";
         for (String[] s: separadores) if (numeroToken.compareTo(s[1]) == 0) return s[2];
         for (String[] a: automatas) if (numeroToken.compareTo(a[1]) == 0) return a[0];
         return "nada";//espero que la encuentre
